@@ -142,6 +142,7 @@ static ssize_t monitor_dev_ops_write(struct file *file, const char __user *buf,
 {
 	char str[32];
 	int n;
+	int i;
 	int val;
 	struct net_device *dev = NULL;
 
@@ -156,6 +157,13 @@ static ssize_t monitor_dev_ops_write(struct file *file, const char __user *buf,
 	*_pos = n;
 
 	str[n] = '\0';
+
+	for (i = 0; i < n; ++i) {
+		if (str[i] == '\n') {
+			str[i] = '\0';
+			break;
+		}
+	}
 
 	dev = __dev_get_by_name(&init_net, str);
 

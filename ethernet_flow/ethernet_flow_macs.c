@@ -1,3 +1,4 @@
+#include <linux/module.h>
 #include <linux/printk.h>
 #include <linux/netdevice.h>
 #include <linux/proc_fs.h>
@@ -150,8 +151,8 @@ void ethernet_flow_macs_collection_cleanup(void){
 	printk(KERN_INFO "ethernet_flow_macs_collection_cleanup\n");
 
 	if (ethernet_flow_macs_collection_table_proc)
-		proc_remove(ethernet_flow_macs_collection_table_proc);
+		remove_proc_entry("macs_table", ethernetflow_root);
 
 	if (ethernet_flow_macs_collection_clear_proc)
-		proc_remove(ethernet_flow_macs_collection_clear_proc);
+		remove_proc_entry("macs_clear", ethernetflow_root);
 }

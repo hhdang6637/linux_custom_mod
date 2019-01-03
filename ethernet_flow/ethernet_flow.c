@@ -1,3 +1,4 @@
+#include <linux/module.h>
 #include <linux/uaccess.h>
 #include <linux/proc_fs.h>
 #include <linux/slab.h>
@@ -198,13 +199,13 @@ void ethernet_flow_cleanup(void){
 	printk(KERN_INFO "ethernet_flow_cleanup\n");
 
 	if (ethernetflow_table_proc)
-		proc_remove(ethernetflow_table_proc);
+		remove_proc_entry("flow_table", ethernetflow_root);
 
 	if (ethernetflow_size_proc)
-		proc_remove(ethernetflow_size_proc);
+		remove_proc_entry("flow_size", ethernetflow_root);
 
 	if (ethernetflow_clear_proc)
-		proc_remove(ethernetflow_clear_proc);
+		remove_proc_entry("flow_clear", ethernetflow_root);
 
 	if (current_statistic)
 		kfree(current_statistic);

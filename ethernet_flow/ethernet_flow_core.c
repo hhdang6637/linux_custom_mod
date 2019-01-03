@@ -51,7 +51,7 @@ static int ethernetflow_remove_if(struct net_device *dev) {
 
 	netdev_rx_handler_unregister(dev);
 
-	dev_set_promiscuity(dev, 0);
+	dev_set_promiscuity(dev, -1);
 
 	return 0;
 }

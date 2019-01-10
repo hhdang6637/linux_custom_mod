@@ -1,4 +1,4 @@
-# linux_custom_mod
+# Simple ethernet_flow module
 This is a small network linux module that let us capture MAC addresses and ethernet flows statistic.
 After you load this modoule to kernel. It creates some proc files under /proc/ethernet_flow
 ```
